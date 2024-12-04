@@ -17,12 +17,13 @@ delimiter ;
 
 delimiter //
 create procedure crear_evento (in nom varchar(30), in fech date, in tipoE varchar(30), in tipoD varchar(30), in descr varchar(30)) 
+#set transaction isolation level repeatable read; 
 begin
 insert into eventos (nomEv, fecha, tipoEv, tipoDet, descripDet) values (nom, fech, tipoE, tipoD, descr);
 end;
 //
 delimiter ;
+drop procedure crear_evento;
 
 call crear_evento('Event2', '2024-10-10', 'Bautismo', 'Color', 'Rosa'); 
 select * from eventos;
-
