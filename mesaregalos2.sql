@@ -1,6 +1,6 @@
 create database mesaregalos2;
 use mesaregalos2;
-#drop database mesaregalos2;
+drop database mesaregalos2;
 
 create table eventos (
 idEv int primary key auto_increment,
@@ -22,7 +22,10 @@ foreign key (idCli) references clientes (idCli) on delete cascade on update casc
 create table clientes (
 idCli int primary key auto_increment,
 nomCli varchar(30),
-dirCli varchar(30)
+dirCli varchar(30),
+userC varchar (20),
+passC varchar (20),
+saldoC decimal(10,2)
 );
 
 create table regalos (
@@ -43,12 +46,14 @@ foreign key (idInv) references invitados (idInv) on delete cascade on update cas
 )engine=innodb;
 
 create table invitados (
-idInv int primary key auto_increment,
+idInv int primary key,
 nomInv varchar(30)
 )engine=innodb;
 
 create table articulos (
 idArt int primary key auto_increment,
+nomArt varchar(30),
 precArt decimal (10,2),
 existArt int
 )engine=innodb;
+
